@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# ignoring firebase setup file, go to your Firebase console and setup the appropriate Database, in this case I used Cloud Firestore
+# Collection name: people
+# document: Randomized
+# fields: name [String], url [String]  
+firebase.js
