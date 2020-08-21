@@ -3,6 +3,7 @@ import "./ChatScreen.css";
 import { Avatar } from "@material-ui/core";
 
 function ChatScreen() {
+  const [input, setInput] = useState("");
   const [messages, setMessages] = useState([
     {
       name: "Emily",
@@ -20,7 +21,11 @@ function ChatScreen() {
       message: "Yeah I think we met at Bob's birthday party last week",
     },
   ]);
-
+  const handleSend = (e) => {
+    e.preventDefault();
+    setMessages([...messages, { message: input }]);
+    setInput("");
+  };
   return (
     <div className="chatScreen">
       <p className="chatScreen__timestamp">
@@ -42,6 +47,23 @@ function ChatScreen() {
           </div>
         )
       )}
+
+      <form className="chatScreen__input">
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          className="chatScreen__inputField"
+          type="text"
+          placeholder="Type a message..."
+        />
+        <button
+          onClick={handleSend}
+          type="submit"
+          className="chatScreen__inputButton"
+        >
+          SEND
+        </button>
+      </form>
     </div>
   );
 }
